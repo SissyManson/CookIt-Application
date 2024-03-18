@@ -3,8 +3,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/SissyManson/CookIt-CookBook-Application/assets/44162252/0c6d5800-01f4-4659-a688-fd0cc01c6bd2">
-    <img src="#" alt="Logo" width="80" height="80">
+  <a href="#">
+    <img src="https://github.com/SissyManson/CookIt-CookBook-Application/assets/44162252/0c6d5800-01f4-4659-a688-fd0cc01c6bd2" alt="Logo" height="100">
   </a>
 
   <h2 align="center">Cook It!</h2>
