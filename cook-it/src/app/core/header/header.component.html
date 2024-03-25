@@ -1,9 +1,15 @@
 <nav class="mainNav">
   <div class="mainNav__links">
-    <a href="" class="mainNav__link">About</a>
-    <a href="" class="mainNav__link">Projects</a>
-    <a href="" class="mainNav__link">Team</a>
-    <a href="" class="mainNav__link">Contacts</a>
+    <a routerLink="/about" class="mainNav__link">About</a>
+    <a routerLink="/recipes" class="mainNav__link">Recipes</a>
+    <a routerLink="/recipes/create" class="mainNav__link">Create</a>
+    <a routerLink="/contacts" class="mainNav__link">Contacts</a>
+    <!-- for auth users -->
+    <a routerLink="/my-profile" class="mainNav__link">My Profile</a>
+    <a routerLink="/auth/logout" class="mainNav__link">Logout</a>
+    <!-- for guests -->
+    <a routerLink="/auth/login" class="mainNav__link">Login</a>
+    <a routerLink="/auth/register" class="mainNav__link">Register</a>
   </div>
   <div class="mainNav__logo">
     <img src="assets/images/Logo.png" height="100px" alt="logo.png" />
