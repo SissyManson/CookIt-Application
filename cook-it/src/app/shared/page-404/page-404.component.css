@@ -1,0 +1,15 @@
+.not-found {
+  width: 100%;
+  padding: 10rem 0;
+  text-align: center;
+ 
+
+}
+#not-found-img {
+  max-width: 50%;
+}
+#home-link {
+  cursor: pointer;
+  text-transform: uppercase;
+  color: #5c6c8f;
+}
