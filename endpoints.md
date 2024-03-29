@@ -8,7 +8,7 @@
  
   ### Recipes
   [All] - '/recipes'
-  [Details] - '/recipes/details/:id'
+  [Details] - '/recipes/:id'
 
   ### Auth
   [Login] - '/auth/login'
@@ -19,6 +19,6 @@
 [My-profile] - '/my-profile'
 
   ### Recipes
-  [Edit] - '/recipes/details/:id/edit'
-  [Delete] - '/recipes/details/:id/delete'
   [Create] - '/recipes/create'
+  [Edit] - '/recipes/:id/edit'
+  [Delete] - '/recipes/:id/delete'
