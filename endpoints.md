@@ -2,7 +2,6 @@
 
 ## Public
 [Home] - '/home'
-[About] - '/about'
 [Contacts] - '/contacts'
 [Not-found] - '/not-found'
  
