@@ -1,9 +1,8 @@
 export interface User {
-  _id: string;
-  name: string;
+  id: string;
+  username: string;
   email: string;
   password: string;
-  isMale?: boolean;
   ownedRecipes:Array<string>
   likedRecipes:Array<string>
 }
