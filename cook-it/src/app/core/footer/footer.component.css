@@ -67,6 +67,10 @@ a {
 }
 .footer-menu-list li {
   margin-top: 5px;
+  margin-bottom: 13px;
+}
+.footer-menu-list li:hover {
+  font-weight: 600;
 }
 
 .footer-call-to-action-description {
