@@ -9,18 +9,27 @@ import { RecipesModule } from './recipes/recipes.module';
 import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
 import { ContactsComponent } from './contacts/contacts.component';
+import { HttpClientModule } from '@angular/common/http';
+import { appInterceptorProvider } from './ap.interceptor';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ContactsComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    ContactsComponent,
+    AuthenticateComponent
+  ],
   imports: [
     BrowserModule,
     CoreModule,
     SharedModule,
     RecipesModule,
     UserModule,
+    HttpClientModule,
     AppRoutingModule, // ! Keep this at the BOTTOM
   ],
-  providers: [],
+  providers: [appInterceptorProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

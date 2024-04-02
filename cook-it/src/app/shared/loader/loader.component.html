@@ -1,1 +1,117 @@
-<div class="loader"></div>
+<div class="pizza">
+  <div class="slice">
+    <div class="relative">
+    <div class="sauce"></div>
+  <div class="cheese"></div>
+  <div class="tomato"></div>
+  <div class="olive"></div>
+  <div class="olive two"></div>
+    <div class="olive three"></div>
+  <div class="capsicum"></div>
+   <div class="capsicum two"></div>
+  <div class="capsicum three"></div>
+  <div class="tomato two"></div>
+  <div class="tomato three"></div>
+   <div class="tomato four"></div>
+  </div>
+  </div>
+  <div class="slice two">
+    <div class="relative">
+    <div class="sauce"></div>
+  <div class="cheese"></div>
+  <div class="tomato"></div>
+  <div class="olive"></div>
+  <div class="olive two"></div>
+    <div class="olive three"></div>
+  <div class="capsicum"></div>
+   <div class="capsicum two"></div>
+  <div class="capsicum three"></div>
+  <div class="tomato two"></div>
+  <div class="tomato three"></div>
+   <div class="tomato four"></div>
+    </div>
+  </div>
+  <div class="slice three">
+    <div class="relative">
+    <div class="sauce"></div>
+  <div class="cheese"></div>
+  <div class="tomato"></div>
+  <div class="olive"></div>
+  <div class="olive two"></div>
+    <div class="olive three"></div>
+  <div class="capsicum"></div>
+   <div class="capsicum two"></div>
+  <div class="capsicum three"></div>
+  <div class="tomato two"></div>
+  <div class="tomato three"></div>
+   <div class="tomato four"></div>
+    </div>
+  </div>
+  <div class="slice four">
+    <div class="relative">
+    <div class="sauce"></div>
+  <div class="cheese"></div>
+  <div class="tomato"></div>
+  <div class="olive"></div>
+  <div class="olive two"></div>
+    <div class="olive three"></div>
+  <div class="capsicum"></div>
+   <div class="capsicum two"></div>
+  <div class="capsicum three"></div>
+  <div class="tomato two"></div>
+  <div class="tomato three"></div>
+   <div class="tomato four"></div>
+    </div>
+  </div>
+   <div class="slice five">
+    <div class="relative">
+    <div class="sauce"></div>
+  <div class="cheese"></div>
+  <div class="tomato"></div>
+  <div class="olive"></div>
+  <div class="olive two"></div>
+    <div class="olive three"></div>
+  <div class="capsicum"></div>
+   <div class="capsicum two"></div>
+  <div class="capsicum three"></div>
+  <div class="tomato two"></div>
+  <div class="tomato three"></div>
+   <div class="tomato four"></div>
+    </div>
+  </div>
+  <div class="slice six">
+    <div class="relative">
+    <div class="sauce"></div>
+  <div class="cheese"></div>
+  <div class="tomato"></div>
+  <div class="olive"></div>
+  <div class="olive two"></div>
+    <div class="olive three"></div>
+  <div class="capsicum"></div>
+   <div class="capsicum two"></div>
+  <div class="capsicum three"></div>
+  <div class="tomato two"></div>
+  <div class="tomato three"></div>
+   <div class="tomato four"></div>
+    </div>
+  </div>
+</div>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <defs>
+      <filter id="shadowed-goo">
+          
+          <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="16" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+          <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
+          <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow" />
+          <feOffset in="shadow" dx="1" dy="1" result="shadow" />
+          <feComposite in2="shadow" in="goo" result="goo" />
+          <feComposite in2="goo" in="SourceGraphic" result="mix" />
+      </filter>
+      <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+          <feComposite in2="goo" in="SourceGraphic" result="mix" />
+      </filter>
+    </defs>
+</svg>
