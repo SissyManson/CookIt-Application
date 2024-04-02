@@ -1,9 +1,27 @@
 import { Component } from '@angular/core';
-import { NgOptimizedImage } from '@angular/common';
+import { UserService } from 'src/app/user/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  constructor(private userService: UserService, private router: Router) {}
+
+  get isLoggedUser(): boolean {
+    return this.userService.isLoggedUser;
+  }
+
+  get username(): string {
+    return this.userService.user?.username || '';
+  }
+
+  logout() {
+    this.userService.logout().subscribe({
+      next: () => this.router.navigate(['/home']),
+      error: () => this.router.navigate(['/auth/login']),
+    });
+  }
+}

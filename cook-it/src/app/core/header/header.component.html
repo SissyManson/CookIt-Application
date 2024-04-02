@@ -1,14 +1,21 @@
 <nav class="mainNav">
   <div class="mainNav__links">
+    <a routerLink="/home" class="mainNav__link">Home</a>
     <a routerLink="/recipes" class="mainNav__link">Recipes</a>
-    <a routerLink="/recipes/create" class="mainNav__link">Create</a>
     <a routerLink="/contacts" class="mainNav__link">Contacts</a>
+
     <!-- for auth users -->
-    <a routerLink="/my-profile" class="mainNav__link">My Profile</a>
-    <a routerLink="/auth/logout" class="mainNav__link">Logout</a>
+    <ng-container *ngIf="isLoggedUser">
+      <a routerLink="/recipes/create" class="mainNav__link">Create Recipe</a>
+      <a routerLink="/my-profile" class="mainNav__link">My Profile</a>
+      <a (click)="logout()" class="mainNav__link">Logout</a>
+    </ng-container>
+
     <!-- for guests -->
-    <a routerLink="/auth/login" class="mainNav__link">Login</a>
-    <a routerLink="/auth/register" class="mainNav__link">Register</a>
+    <ng-container *ngIf="!isLoggedUser">
+      <a routerLink="/auth/login" class="mainNav__link">Login</a>
+      <a routerLink="/auth/register" class="mainNav__link">Register</a>
+    </ng-container>
   </div>
   <div class="mainNav__logo">
     <img src="assets/images/Logo.png" height="100px" alt="logo.png" />
@@ -18,7 +25,10 @@
 <header class="mainHeading">
   <div class="mainHeading__content">
     <article class="mainHeading__text">
-      <h2 class="mainHeading__title">Cook it!</h2>
+      <h2 class="mainHeading__title">
+        <span *ngIf="isLoggedUser"> Welcome, {{ username }}! </span>
+        <span *ngIf="!isLoggedUser"> Cook It!</span>
+      </h2>
       <p class="mainHeading__description">
         Cook It! is the all-in-one recipe keeper where you can try various
         recipes and even create your own.
