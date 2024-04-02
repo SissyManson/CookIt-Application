@@ -3,30 +3,69 @@
     <div class="card card-2">
       <div class="card-body">
         <h2 class="title">Welcome back</h2>
-        <form method="POST">
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
           <div class="input-group">
+            <ng-container *ngIf="loginForm.get('email')?.touched">
+              <p
+                class="error"
+                *ngIf="loginForm.get('email')?.errors?.['required']"
+              >
+                Email is required!
+              </p>
+              <p
+                class="error"
+                *ngIf="loginForm.get('email')?.errors?.['minlength']"
+              >
+                Email must be at least 5 characters!
+              </p>
+            </ng-container>
             <input
               class="input--style-2"
-              type="text"
+              type="email"
               placeholder="Email"
               name="email"
+              formControlName="email"
             />
           </div>
           <div class="input-group">
+            <ng-container *ngIf="loginForm.get('password')?.touched">
+              <p
+                class="error"
+                *ngIf="loginForm.get('password')?.errors?.['required']"
+              >
+                Password is required!
+              </p>
+              <p
+                class="error"
+                *ngIf="loginForm.get('password')?.errors?.['minlength']"
+              >
+                Password must be at least 5 characters!
+              </p>
+            </ng-container>
             <input
               class="input--style-2"
               type="password"
               placeholder="Password"
               name="password"
+              formControlName="password"
             />
           </div>
           <div class="p-t-30">
-            <button class="btn btn--radius btn--green" type="submit">
+            <button
+              [disabled]="loginForm.invalid"
+              [style]="{
+                backgroundColor: loginForm.invalid ? 'gray' : '#567d99',
+                cursor: loginForm.invalid ? 'not-allowed' : 'pointer'
+              }"
+              class="btn btn--radius btn--green"
+            >
               Login
             </button>
           </div>
         </form>
-        <h5 class="toLogin">Don't have an account? Register here.</h5>
+        <h5 routerLink="/auth/register" class="toLogin">
+          Don't have an account? Register here.
+        </h5>
       </div>
       <div class="card-heading"></div>
     </div>

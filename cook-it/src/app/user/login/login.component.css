@@ -202,3 +202,12 @@ input {
   cursor: pointer;
   font-weight: 100;
 }
+
+.error {
+  position: relative;
+  width: 100%;
+  color: red;
+  z-index: 22;
+  padding: 0;
+  margin: 0;
+}

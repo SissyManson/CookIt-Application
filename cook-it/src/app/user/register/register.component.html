@@ -1,1 +1,127 @@
-<p>register works!</p>
+<div class="page-wrapper bg-red p-t-180 p-b-100">
+  <div class="wrapper wrapper--w960">
+    <div class="card card-2">
+      <div class="card-heading"></div>
+      <div class="card-body">
+        <h2 class="title">Registration Info</h2>
+        <!-- TODO: add error messages -->
+        <form [formGroup]="regForm" (ngSubmit)="register()">
+          <div class="input-group">
+            <ng-container *ngIf="regForm.get('email')?.touched">
+              <p
+                class="error"
+                *ngIf="regForm.get('email')?.errors?.['required']"
+              >
+                Email is required!
+              </p>
+              <p
+                class="error"
+                *ngIf="regForm.get('email')?.errors?.['minlength']"
+              >
+                Email must be at least 5 characters!
+              </p>
+            </ng-container>
+            <input
+              class="input--style-2"
+              type="email"
+              placeholder="Email"
+              name="email"
+              formControlName="email"
+            />
+          </div>
+          <div class="input-group">
+            <ng-container *ngIf="regForm.get('username')?.touched">
+              <p
+                class="error"
+                *ngIf="regForm.get('username')?.errors?.['required']"
+              >
+                Username is required!
+              </p>
+              <p
+                class="error"
+                *ngIf="regForm.get('username')?.errors?.['minlength']"
+              >
+                Username must be at least 5 characters!
+              </p>
+            </ng-container>
+            <input
+              class="input--style-2"
+              type="text"
+              placeholder="Username"
+              name="username"
+              formControlName="username"
+            />
+          </div>
+
+          <div class="row row-space">
+            <ng-container formGroupName="passwordGroup">
+              <div class="col-2">
+                <div class="input-group">
+                  <ng-container *ngIf="passwordGroup?.get('password')?.touched">
+                    <p
+                      class="error"
+                      *ngIf="passwordGroup?.get('password')?.errors?.['required']"
+                    >
+                      Password is required!
+                    </p>
+                    <p
+                      class="error"
+                      *ngIf="passwordGroup?.get('password')?.errors?.['minlength']"
+                    >
+                      Password must be at least 5 characters!
+                    </p>
+                  </ng-container>
+                  <input
+                    class="input--style-2 js-datepicker"
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    formControlName="password"
+                  />
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="input-group">
+                  <ng-container
+                    *ngIf="passwordGroup?.get('rePassword')?.touched"
+                  >
+                    <p
+                      class="error"
+                      *ngIf="passwordGroup?.errors?.['matchPasswordsValidator'] || 
+                      passwordGroup?.get('rePassword')?.errors?.['required']"
+                    >
+                      Passwords don't match!
+                    </p>
+                  </ng-container>
+                  <input
+                    class="input--style-2 js-datepicker"
+                    type="password"
+                    placeholder="Repeat password"
+                    name="rePassword"
+                    formControlName="rePassword"
+                  />
+                </div>
+              </div>
+            </ng-container>
+          </div>
+
+          <div class="p-t-30">
+            <button
+            [disabled]="regForm.invalid"
+            [style]="{
+              backgroundColor: regForm.invalid ? 'gray' : '#567d99',
+              cursor: regForm.invalid ? 'not-allowed' : 'pointer'
+            }"
+              class="btn btn--radius btn--green"
+            >
+              Register
+            </button>
+          </div>
+        </form>
+        <h5 routerLink="/auth/login" class="toLogin">
+          Already have an account? Login here.
+        </h5>
+      </div>
+    </div>
+  </div>
+</div>
