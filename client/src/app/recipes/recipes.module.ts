@@ -6,15 +6,16 @@ import { EditComponent } from './edit/edit.component';
 import { DetailsComponent } from './details/details.component';
 import { AllRecipesComponent } from './all-recipes/all-recipes.component';
 import { RecipeRoutingModule } from './recipe-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    DetailsComponent,
     RecipeCardComponent,
+    DetailsComponent,
     CreateComponent,
     EditComponent,
     AllRecipesComponent,
   ],
-  imports: [CommonModule, RecipeRoutingModule],
+  imports: [CommonModule, RecipeRoutingModule, ReactiveFormsModule],
 })
 export class RecipesModule {}

@@ -50,7 +50,7 @@ export class UserService implements OnDestroy {
   }
 
   login(email: string, password: string) {
-    console.log('login invoked');
+    
     return this.http
       .post<authUser>('/api/login', { email, password })
       .pipe(tap((user) => this.user$$.next(user)));

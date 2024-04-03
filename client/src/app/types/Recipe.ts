@@ -1,11 +1,11 @@
 export interface Recipe {
-  id: string;
+  _id: string;
   title: string;
   category: string;
   description: Description;
   imageURL: string;
   owner: string;
-  likedBy: Array<string>;
+  likedBy: string[];
 }
 interface Description {
   prepTime: number;

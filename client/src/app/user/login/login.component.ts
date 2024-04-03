@@ -23,9 +23,10 @@ export class LoginComponent {
     if (this.loginForm.invalid) return;
 
     const { email, password } = this.loginForm.value;
-    console.log('logged in');
-    this.userService
-      .login(email!, password!)
-      .subscribe(() => this.router.navigate(['/recipes']));
+
+    this.userService.login(email!, password!).subscribe(() => {
+      this.loginForm.reset();
+      this.router.navigate(['/recipes']);
+    });
   }
 }

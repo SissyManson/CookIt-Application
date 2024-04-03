@@ -1,0 +1,168 @@
+<div class="page-wrapper bg-red p-t-180 p-b-100">
+  <div class="wrapper wrapper--w960">
+    <div class="card card-2">
+      <div class="card-heading"></div>
+      <div class="card-body">
+        <h2 class="title">Create Your Recipe</h2>
+        <!-- TODO: add error messages -->
+        <form [formGroup]="createForm" (ngSubmit)="createRecipe()">
+          <div class="input-group">
+            <ng-container *ngIf="createForm.get('title')?.touched">
+              <p
+                class="error"
+                *ngIf="createForm.get('title')?.errors?.['required']"
+              >
+                Title is required!
+              </p>
+              <p
+                class="error"
+                *ngIf="createForm.get('title')?.errors?.['minlength']"
+              >
+                Title must be at least 5 characters!
+              </p>
+            </ng-container>
+            <input
+              class="input--style-2"
+              type="text"
+              placeholder="Title"
+              name="title"
+              formControlName="title"
+            />
+          </div>
+
+          <div class="row row-space">
+            <ng-container formGroupName="descriptionGroup">
+              <div class="col-2">
+                <div class="input-group">
+                  <select
+                    class="input-select"
+                    name="category"
+                    id="category"
+                    formControlName="category"
+                  >
+                    <option value="" disabled selected hidden>
+                      Choose Category
+                    </option>
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Brunch">Brunch</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                    <option value="Dessert">Dessert</option>
+                    <option value="Baked-goods">Baked-goods</option>
+                    <option value="Vegetarian">Vegetarian</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="input-group">
+                  <input
+                    class="input--style-2 js-datepicker"
+                    type="number"
+                    min="1"
+                    value="1"
+                    placeholder="Number of Servings"
+                    name="servings"
+                    formControlName="servings"
+                  />
+                </div>
+              </div>
+            </ng-container>
+          </div>
+
+          <div class="row row-space">
+            <ng-container formGroupName="timeGroup">
+              <div class="col-2">
+                <div class="input-group">
+                  <input
+                    class="input--style-2 js-datepicker"
+                    type="number"
+                    min="1"
+                    value="1"
+                    placeholder="Preparation Time - mins"
+                    name="prepTime"
+                    formControlName="prepTime"
+                  />
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="input-group">
+                  <input
+                    class="input--style-2 js-datepicker"
+                    type="number"
+                    min="1"
+                    value="1"
+                    placeholder="Cooking Time - mins"
+                    name="cookTime"
+                    formControlName="cookTime"
+                  />
+                </div>
+              </div>
+            </ng-container>
+          </div>
+
+          <div class="input-group">
+            <ng-container *ngIf="createForm.get('imageURL')?.touched">
+              <p
+                class="error"
+                *ngIf="createForm.get('imageURL')?.errors?.['required']"
+              >
+                Title is required!
+              </p>
+              <p
+                class="error"
+                *ngIf="createForm.get('imageURL')?.errors?.['minlength']"
+              >
+                Title must be at least 5 characters!
+              </p>
+            </ng-container>
+            <input
+              class="input--style-2"
+              type="text"
+              placeholder="Link to recipe Photo"
+              name="imageURL"
+              formControlName="imageURL"
+            />
+          </div>
+
+          <div class="input-group">
+            <ng-container *ngIf="createForm.get('title')?.touched">
+              <p
+                class="error"
+                *ngIf="createForm.get('title')?.errors?.['required']"
+              >
+                Title is required!
+              </p>
+              <p
+                class="error"
+                *ngIf="createForm.get('title')?.errors?.['minlength']"
+              >
+                Title must be at least 5 characters!
+              </p>
+            </ng-container>
+
+            <textarea
+              name="directions"
+              id="message"
+              rows="20"
+              placeholder="Describe it how it's done..."
+              formControlName="directions"
+            ></textarea>
+          </div>
+
+          <div class="p-t-30">
+            <button
+              [disabled]="createForm.invalid"
+              [style]="{
+                backgroundColor: createForm.invalid ? 'gray' : '#567d99',
+                cursor: createForm.invalid ? 'not-allowed' : 'pointer'
+              }"
+              class="btn btn--radius btn--green"
+            >
+              Create
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

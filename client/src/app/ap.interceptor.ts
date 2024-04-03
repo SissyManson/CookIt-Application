@@ -28,7 +28,6 @@ export class ApInterceptor implements HttpInterceptor {
         withCredentials: true,
       });
     }
-    console.log('Intercepted url: ', req.url);
 
     return next.handle(req).pipe(
       catchError((err) => {
