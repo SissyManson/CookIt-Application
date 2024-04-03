@@ -6,22 +6,17 @@ import { NgModule } from '@angular/core';
 import { AuthActivate } from '../guards/auth.activate';
 
 const routes: Routes = [
+  { path: '', title: 'All recpies', component: AllRecipesComponent },
   {
-    path: 'recipes',
-    children: [
-      { path: '', title: 'All recpies', component: AllRecipesComponent },
-      {
-        path: 'create',
-        title: 'Create a Recipe',
-        component: CreateComponent,
-        canActivate: [AuthActivate],
-      },
-      {
-        path: ':recipeId',
-        title: 'Recipe Details',
-        component: DetailsComponent,
-      },
-    ],
+    path: 'create',
+    title: 'Create a Recipe',
+    component: CreateComponent,
+    canActivate: [AuthActivate],
+  },
+  {
+    path: 'details/:recipeId',
+    title: 'Recipe Details',
+    component: DetailsComponent,
   },
 ];
 
