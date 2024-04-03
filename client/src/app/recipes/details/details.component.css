@@ -1,0 +1,53 @@
+.wrapper {
+  margin: 12em auto;
+  width: 45vw;
+  text-align: center;
+}
+.mainTitle {
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 1em;
+  color: #637498;
+  width: 100%;
+  font-size: 36pt;
+}
+
+.description {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 10px;
+  border-bottom: 6px solid #637498;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.description > * {
+  flex: 1;
+}
+.description div {
+  text-align: center;
+  margin: 2em;
+}
+.description label {
+  font-weight: 600;
+  font-size: 14pt;
+}
+.description p {
+  font-size: 18px;
+  padding-top: 5px;
+}
+.directions h3 {
+  font-size: 26pt;
+  text-align: left;
+  margin-top: 2em;
+}
+.directionPara {
+  font-size: 18pt;
+  text-align: left;
+  margin-top: 22px;
+}
+#img {
+  width: auto;
+  max-width: 100%;
+  max-height: 800px;
+  height: 100%;
+}

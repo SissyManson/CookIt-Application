@@ -1,1 +1,31 @@
-<p>details works!</p>
+<main class="wrapper">
+  <h2 class="mainTitle">{{ recipe.title }}</h2>
+  <img src="{{ recipe.imageURL }}" id="img" alt="{{ recipe.title }}" />
+  
+  <div class="description">
+    <div>
+      <label>Preparation Time: </label>
+      <p>{{ recipe.prepTime }} mins</p>
+    </div>
+    <div>
+      <label>Cooking time: </label>
+      <p>{{ recipe.cookTime }} mins</p>
+    </div>
+    <div>
+      <label>Total Time: </label>
+      <p>{{ getTotalTime() }}</p>
+    </div>
+    <div>
+      <label>Servings: </label>
+      <p>{{ recipe.servings }}</p>
+    </div>
+  </div>
+
+  <div class="directions">
+    <h3>Directions:</h3>
+
+    <ng-container *ngFor="let paragraph of getDirections">
+      <p class="directionPara">{{ paragraph }}</p>
+    </ng-container>
+  </div>
+</main>
