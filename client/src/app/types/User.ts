@@ -9,7 +9,7 @@ export interface User {
   likedRecipes: string[];
 }
 export interface authUser {
-  id: string;
+  _id: string;
   username: string;
   email: string;
   password: string;

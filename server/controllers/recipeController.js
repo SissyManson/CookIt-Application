@@ -3,7 +3,7 @@ const { recipeModel, userModel } = require('../models');
 function getRecipes(req, res, next) {
    recipeModel
       .find()
-      .populate('userId')
+      .populate('owner')
       .then((recipes) => res.json(recipes))
       .catch(next);
 }

@@ -18,7 +18,7 @@ export class CreateComponent {
   ) {}
 
   get userId() {
-    return this.userService.user?.id;
+    return this.userService.user?._id;
   }
 
   imgPattern: RegExp = new RegExp('^https?://');
@@ -66,6 +66,5 @@ export class CreateComponent {
         this.router.navigate([`/recipes/${createdRecipe._id}`]);
       });
 
-    // ! TODO: textarea new lines are saved as '\n'
   }
 }
