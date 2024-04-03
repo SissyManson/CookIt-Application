@@ -1,0 +1,13 @@
+.wrapper {
+  margin: 12em 2em;
+}
+.mainTitle {
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 2em;
+  color: #637498;
+  width: 100%;
+  text-align: center;
+  letter-spacing: .1em;
+  font-size: 36pt;
+}
