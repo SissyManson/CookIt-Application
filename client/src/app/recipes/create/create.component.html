@@ -53,6 +53,7 @@
                   </select>
                 </div>
               </div>
+
               <div class="col-2">
                 <div class="input-group">
                   <input
@@ -84,6 +85,7 @@
                   />
                 </div>
               </div>
+
               <div class="col-2">
                 <div class="input-group">
                   <input
@@ -100,19 +102,20 @@
             </ng-container>
           </div>
 
+          <!-- IMG URL -->
           <div class="input-group">
             <ng-container *ngIf="createForm.get('imageURL')?.touched">
               <p
                 class="error"
                 *ngIf="createForm.get('imageURL')?.errors?.['required']"
               >
-                Title is required!
+                Image url is required!
               </p>
               <p
                 class="error"
                 *ngIf="createForm.get('imageURL')?.errors?.['minlength']"
               >
-                Title must be at least 5 characters!
+                Image url must be at least 5 characters!
               </p>
             </ng-container>
             <input
@@ -124,19 +127,20 @@
             />
           </div>
 
+          <!-- DESCRIPTION -->
           <div class="input-group">
             <ng-container *ngIf="createForm.get('title')?.touched">
               <p
                 class="error"
                 *ngIf="createForm.get('title')?.errors?.['required']"
               >
-                Title is required!
+                Description is required!
               </p>
               <p
                 class="error"
                 *ngIf="createForm.get('title')?.errors?.['minlength']"
               >
-                Title must be at least 5 characters!
+                Description must be at least 13 characters!
               </p>
             </ng-container>
 

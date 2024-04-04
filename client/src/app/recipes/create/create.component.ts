@@ -13,8 +13,8 @@ export class CreateComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private recipeService: RecipeService,
-    private userService: UserService
+    private userService: UserService,
+    private recipeService: RecipeService
   ) {}
 
   get userId() {
@@ -65,6 +65,5 @@ export class CreateComponent {
         this.createForm.reset();
         this.router.navigate([`/recipes/${createdRecipe._id}`]);
       });
-
   }
 }

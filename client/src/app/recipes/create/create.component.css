@@ -216,6 +216,7 @@ input {
 
 #category {
   border: none;
+  width: 355px;
   margin: 10px 0;
   font-size: 14px;
 }
