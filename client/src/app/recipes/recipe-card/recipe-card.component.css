@@ -11,19 +11,18 @@
   color: #637498;
   width: 100%;
   text-align: center;
-  letter-spacing: .1em;
+  letter-spacing: 0.1em;
   font-size: 32pt;
 }
 
 .recipeWrapper {
-  padding: 0;
-  margin: 0 5em;
   display: flex;
+  flex-wrap: wrap;
   row-gap: 10px;
   column-gap: 2em;
 }
 .recipeWrapper > * {
-  flex: 1 1 200px;
+  flex: 1;
 }
 
 .u-clearfix:before,
@@ -42,8 +41,16 @@
 
 .card-container {
   margin: 25px auto 0;
-  position: relative;
   width: 580px;
+  min-width: 580px;
+  max-width: 600px;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 10px;
+  column-gap: 2em;
+}
+.card-container > * {
+  flex: 1;
 }
 
 .card {
