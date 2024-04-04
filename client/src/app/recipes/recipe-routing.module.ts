@@ -14,7 +14,7 @@ const routes: Routes = [
     canActivate: [AuthActivate],
   },
   {
-    path: 'details/:recipeId',
+    path: ':recipeId',
     title: 'Recipe Details',
     component: DetailsComponent,
   },
