@@ -47,7 +47,7 @@ export class RegisterComponent {
       .register(username!, email!, password!, rePassword!)
       .subscribe(() => {
         this.regForm.reset();
-        this.router.navigate(['/home']);
+        this.router.navigate(['/recipes']);
       });
   }
 }
