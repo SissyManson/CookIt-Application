@@ -29,7 +29,6 @@ export class RecipeCardComponent implements OnInit {
   // ! TODO: textarea new lines are saved as '\n'
   ngOnInit(): void {
     this.recipeService.getAll().subscribe((recipess) => {
-      // console.log(recipess[0].directions[0]);
 
       this.recipes = recipess;
       setTimeout(() => {

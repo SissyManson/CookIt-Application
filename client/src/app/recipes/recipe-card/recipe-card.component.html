@@ -2,7 +2,12 @@
   <app-loader />
 </ng-container>
 <ng-container *ngIf="!isLoading">
-  <section class="recipeWrapper">
+  <ng-container *ngIf="recipes?.length === 0">
+    <h1 class="mainTitle">There aren't any recipes to browse yet...</h1>
+  </ng-container>
+
+  <h1 *ngIf="recipes?.length !== 0" class="mainTitle">Browse recipes</h1>
+  <section *ngIf="recipes?.length !== 0" class="recipeWrapper">
     <div *ngFor="let recipe of recipes" class="card-container">
       <div class="card u-clearfix">
         <div class="card-body">
@@ -15,7 +20,7 @@
             {{ recipe.directions[0] | slice : 250 }}
           </span>
 
-          <div routerLink="/recipes/details/{{ recipe._id }}" class="card-read">
+          <div routerLink="/recipes/{{ recipe._id }}" class="card-read">
             Read
           </div>
         </div>

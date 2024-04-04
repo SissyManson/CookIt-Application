@@ -4,6 +4,17 @@
   box-sizing: inherit;
 }
 
+.mainTitle {
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 2em;
+  color: #637498;
+  width: 100%;
+  text-align: center;
+  letter-spacing: .1em;
+  font-size: 32pt;
+}
+
 .recipeWrapper {
   padding: 0;
   margin: 0 5em;
