@@ -41,9 +41,30 @@ export class RecipeService {
     });
   }
 
-  updateRecipe() {}
+  editRecipe(
+    title: string,
+    category: string,
+    prepTime: string,
+    cookTime: string,
+    servings: string,
+    directions: string,
+    imageURL: string,
+    recipeId: string
+  ) {
+    return this.http.put<Recipe>(`/api/recipes/${recipeId}`, {
+      title,
+      category,
+      prepTime,
+      cookTime,
+      servings,
+      directions,
+      imageURL,
+    });
+  }
 
-  deleteRecipe() {}
+  deleteRecipe(recipeId: string) {
+    return this.http.delete<Recipe>(`/api/recipes/${recipeId}`);
+  }
 
   getLastFive(num: number) {
     let url = `${apiUrl}/recipes`;
