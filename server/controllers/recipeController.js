@@ -21,13 +21,19 @@ function createRecipe(req, res, next) {
    const recipeData = req.body;
    const { _id: userId } = req.user;
 
-   recipeModel
-      .create({
-         owner: userId,
-         ...recipeData,
-      })
-      .then((recipe) => res.status(200).json(recipe))
-      .catch(next);
+   return recipeModel
+      .create({ owner: userId, ...recipeData })
+      .then((recipe) => {
+         return Promise.all([
+            userModel.findByIdAndUpdate(
+               { _id: userId },
+               { $push: { ownedRecipes: recipe._id } },
+               { new: true }
+            ),
+         ])
+            .then(() => res.status(200).json(recipe))
+            .catch(next);
+      });
 }
 
 function editRecipe(req, res, next) {
@@ -38,9 +44,9 @@ function editRecipe(req, res, next) {
    // if the userId is not the same as the one of the recipe, the recipe will not be updated
    recipeModel
       .findOneAndUpdate(
-         { _id: recipeId, userId },
+         { _id: recipeId, owner: userId },
          { ...recipeData },
-         { new: true }
+         { runValidators: true, new: true }
       )
       .then((updatedRecipe) => {
          if (updatedRecipe) {
@@ -57,10 +63,10 @@ function deleteRecipe(req, res, next) {
    const { _id: userId } = req.user;
 
    Promise.all([
-      recipeModel.findOneAndDelete({ _id: recipeId, userId }),
+      recipeModel.findOneAndDelete({ _id: recipeId, owner: userId }),
       userModel.findOneAndUpdate(
          { _id: userId },
-         { $pull: { recipes: recipeId } }
+         { $pull: { ownedRecipes: recipeId } }
       ),
    ])
       .then(([deletedOne, _]) => {
@@ -73,19 +79,19 @@ function deleteRecipe(req, res, next) {
       .catch(next);
 }
 
-function like(req, res, next) {
-   const recipeId = req.params.recipeId;
-   const { _id: userId } = req.user;
+// function like(req, res, next) {
+//    const recipeId = req.params.recipeId;
+//    const { _id: userId } = req.user;
 
-   recipeModel
-      .findByIdAndUpdate(
-         { _id: recipeId },
-         { $addToSet: { likedBy: userId } },
-         { new: true }
-      )
-      .then((updatedRecipe) => res.status(200).json(updatedRecipe))
-      .catch(next);
-}
+//    recipeModel
+//       .findByIdAndUpdate(
+//          { _id: recipeId },
+//          { $addToSet: { likedBy: userId } },
+//          { new: true }
+//       )
+//       .then((updatedRecipe) => res.status(200).json(updatedRecipe))
+//       .catch(next);
+// }
 
 module.exports = {
    getRecipes,
@@ -93,5 +99,5 @@ module.exports = {
    createRecipe,
    editRecipe,
    deleteRecipe,
-   like,
+   // like,
 };
