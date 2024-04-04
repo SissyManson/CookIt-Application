@@ -6,7 +6,7 @@ export interface User {
   email: string;
   password: string;
   ownedRecipes: Recipe[];
-  likedRecipes: string[];
+  likedRecipes: Recipe[];
 }
 export interface authUser {
   _id: string;

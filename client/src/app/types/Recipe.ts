@@ -1,4 +1,4 @@
-import { authUser } from './User';
+import { User } from './User';
 
 export interface Recipe {
   _id: string;
@@ -9,8 +9,8 @@ export interface Recipe {
   servings: number;
   directions: string;
   imageURL: string;
-  owner: authUser;
-  likedBy: string[];
+  owner: User;
+  likedBy: User[];
   created_at: string;
   updatedAt: string;
 }
