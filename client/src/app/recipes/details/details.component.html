@@ -1,31 +1,197 @@
 <main class="wrapper">
-  <h2 class="mainTitle">{{ recipe.title }}</h2>
-  <img src="{{ recipe.imageURL }}" id="img" alt="{{ recipe.title }}" />
-  
-  <div class="description">
-    <div>
-      <label>Preparation Time: </label>
-      <p>{{ recipe.prepTime }} mins</p>
-    </div>
-    <div>
-      <label>Cooking time: </label>
-      <p>{{ recipe.cookTime }} mins</p>
-    </div>
-    <div>
-      <label>Total Time: </label>
-      <p>{{ getTotalTime() }}</p>
-    </div>
-    <div>
-      <label>Servings: </label>
-      <p>{{ recipe.servings }}</p>
-    </div>
-  </div>
+  <!-------------------- READONLY MODE -------------------->
+  <ng-container *ngIf="!editMode">
+    <h2 class="mainTitle">{{ recipe.title }}</h2>
+    <h4 class="secondaryTitle">-{{ recipe.category }}-</h4>
+    <img src="{{ recipe.imageURL }}" id="img" alt="{{ recipe.title }}" />
 
-  <div class="directions">
-    <h3>Directions:</h3>
+    <div class="description">
+      <div>
+        <label>Preparation Time: </label>
+        <p>{{ recipe.prepTime }} mins</p>
+      </div>
+      <div>
+        <label>Cooking time: </label>
+        <p>{{ recipe.cookTime }} mins</p>
+      </div>
+      <div>
+        <label>Total Time: </label>
+        <p>{{ getTotalTime() }}</p>
+      </div>
+      <div>
+        <label>Servings: </label>
+        <p>{{ recipe.servings }}</p>
+      </div>
+    </div>
 
-    <ng-container *ngFor="let paragraph of getDirections">
-      <p class="directionPara">{{ paragraph }}</p>
+    <div class="directions">
+      <h3>Directions:</h3>
+
+      <ng-container *ngFor="let paragraph of getDirections">
+        <p class="directionPara">{{ paragraph }}</p>
+      </ng-container>
+    </div>
+
+    <ng-container *ngIf="isLoggedUser">
+      <div *ngIf="userId == recipe.owner?.toString()" class="btns">
+        <button (click)="deleteRecipe(recipe._id)" class="cta delete">
+          Delete
+        </button>
+        <button (click)="toggleEdit()" class="cta edit">Edit</button>
+      </div>
     </ng-container>
-  </div>
+  </ng-container>
+
+  <!-------------------- EDIT MODE -------------------->
+  <ng-container *ngIf="editMode">
+    <h2 class="mainTitle">Edit Your Recipe</h2>
+
+    <form [formGroup]="editForm" (ngSubmit)="editRecipe(recipe._id)">
+      <!-- TITLE -->
+      <div class="input-group">
+        <ng-container *ngIf="editForm.get('title')?.touched">
+          <p class="error" *ngIf="editForm.get('title')?.errors?.['required']">
+            Title is required!
+          </p>
+          <p class="error" *ngIf="editForm.get('title')?.errors?.['minlength']">
+            Title must be at least 5 characters!
+          </p>
+        </ng-container>
+        <label for="title">Title</label>
+        <input
+          class="input--style-2"
+          type="text"
+          placeholder="Title"
+          name="title"
+          formControlName="title"
+        />
+      </div>
+
+      <div class="row row-space">
+        <!-- CATEGORY -->
+        <div class="col-2">
+          <div class="input-group">
+            <select
+              class="input-select"
+              name="category"
+              id="category"
+              formControlName="category"
+            >
+              <option value="" disabled selected hidden>Choose Category</option>
+              <option value="Breakfast">Breakfast</option>
+              <option value="Brunch">Brunch</option>
+              <option value="Lunch">Lunch</option>
+              <option value="Dinner">Dinner</option>
+              <option value="Dessert">Dessert</option>
+              <option value="Baked-goods">Baked-goods</option>
+              <option value="Vegetarian">Vegetarian</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- SERVINGS -->
+        <div class="col-2">
+          <div class="input-group">
+            <input
+              class="input--style-2 js-datepicker"
+              type="number"
+              min="1"
+              value="1"
+              placeholder="Number of Servings"
+              name="servings"
+              formControlName="servings"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- PREP TIME -->
+      <div class="row row-space">
+        <div class="col-2">
+          <div class="input-group">
+            <input
+              class="input--style-2 js-datepicker"
+              type="number"
+              min="1"
+              value="1"
+              placeholder="Preparation Time - mins"
+              name="prepTime"
+              formControlName="prepTime"
+            />
+          </div>
+        </div>
+
+        <!-- COOK TIME -->
+        <div class="col-2">
+          <div class="input-group">
+            <input
+              class="input--style-2 js-datepicker"
+              type="number"
+              min="1"
+              value="1"
+              placeholder="Cooking Time - mins"
+              name="cookTime"
+              formControlName="cookTime"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- IMG URL -->
+      <div class="input-group">
+        <ng-container *ngIf="editForm.get('imageURL')?.touched">
+          <p
+            class="error"
+            *ngIf="editForm.get('imageURL')?.errors?.['required']"
+          >
+            Image url is required!
+          </p>
+          <p
+            class="error"
+            *ngIf="editForm.get('imageURL')?.errors?.['minlength']"
+          >
+            Image url must be at least 5 characters!
+          </p>
+        </ng-container>
+        <input
+          class="input--style-2"
+          type="text"
+          placeholder="Link to recipe Photo"
+          name="imageURL"
+          formControlName="imageURL"
+        />
+      </div>
+
+      <!-- DESCRIPTION -->
+      <div class="input-group">
+        <ng-container *ngIf="editForm.get('title')?.touched">
+          <p class="error" *ngIf="editForm.get('title')?.errors?.['required']">
+            Description is required!
+          </p>
+          <p class="error" *ngIf="editForm.get('title')?.errors?.['minlength']">
+            Description must be at least 13 characters!
+          </p>
+        </ng-container>
+
+        <textarea
+          name="directions"
+          id="message"
+          rows="20"
+          placeholder="Describe it how it's done..."
+          formControlName="directions"
+        ></textarea>
+      </div>
+
+      <div class="p-t-30">
+        <ng-container *ngIf="isLoggedUser">
+          <div *ngIf="userId == recipe.owner?.toString()" class="btns">
+            <button type="button" (click)="onCancel($event)" class="cta delete">
+              Cancel
+            </button>
+            <button type="submit" class="cta edit">Save</button>
+          </div>
+        </ng-container>
+      </div>
+    </form>
+  </ng-container>
 </main>
