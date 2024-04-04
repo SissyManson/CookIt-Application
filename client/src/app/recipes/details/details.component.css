@@ -8,13 +8,14 @@
   font-weight: 700;
   color: #637498;
   width: 100%;
-  font-size: 36pt;letter-spacing: 5px;
+  font-size: 36pt;
+  letter-spacing: 5px;
 }
 .secondaryTitle {
   text-transform: uppercase;
   margin-bottom: 2em;
   font-weight: 700;
-  color: #B0B0B0;
+  color: #b0b0b0;
   font-size: 14pt;
   width: 100%;
   letter-spacing: 5px;
@@ -77,6 +78,12 @@
   border: 1px solid rgba(99, 116, 152, 0.1);
   box-shadow: inset 0px -80px 0px rgba(99, 116, 152, 0.1);
   transform: translateY(-5px);
+}
+.like:hover {
+  border: 1px solid rgba(99, 116, 152, 0.1);
+  box-shadow: inset 0px -80px 0px rgba(165, 25, 25, 0.1);
+  transform: translateY(-5px);
+  color: #5c819f;
 }
 .delete:hover {
   border: 1px solid rgba(99, 116, 152, 0.1);

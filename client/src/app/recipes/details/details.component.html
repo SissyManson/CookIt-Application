@@ -33,7 +33,7 @@
     </div>
 
     <ng-container *ngIf="isLoggedUser">
-      <div *ngIf="userId == recipe.owner?.toString()" class="btns">
+      <div *ngIf="userId === recipe.owner?.toString()" class="btns">
         <button (click)="deleteRecipe(recipe._id)" class="cta delete">
           Delete
         </button>

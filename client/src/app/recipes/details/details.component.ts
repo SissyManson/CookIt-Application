@@ -24,7 +24,6 @@ export class DetailsComponent implements OnInit {
   }
 
   editMode: boolean = false;
-
   editForm = this.fb.group({
     title: ['', [Validators.required, Validators.minLength(3)]],
     category: ['', [Validators.required]],
