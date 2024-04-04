@@ -1,6 +1,6 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Subscription, tap } from 'rxjs';
-import { authUser } from '../types/User';
+import { User, authUser } from '../types/User';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -11,6 +11,7 @@ export class UserService implements OnDestroy {
   private user$ = this.user$$.asObservable();
 
   user: authUser | undefined;
+  userForCreate: User | undefined;
   userSubscription: Subscription;
 
   get isLoggedUser(): boolean {
