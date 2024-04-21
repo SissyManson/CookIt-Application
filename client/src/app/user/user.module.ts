@@ -7,16 +7,21 @@ import { UserRoutingModule } from './user-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { ContactsComponent } from './contacts/contacts.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent, ProfileComponent],
+  declarations: [
+    LoginComponent,
+    RegisterComponent,
+    ProfileComponent,
+    ContactsComponent,
+  ],
   imports: [
     CommonModule,
     UserRoutingModule,
     RouterModule,
     SharedModule,
     ReactiveFormsModule,
-    
   ],
 })
 export class UserModule {}

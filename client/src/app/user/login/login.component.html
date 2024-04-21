@@ -18,6 +18,13 @@
               >
                 Email must be at least 5 characters!
               </p>
+
+              <p
+              class="error"
+              *ngIf="loginForm.get('email')?.errors?.['pattern']"
+            >
+              Email is invalid!
+            </p>
             </ng-container>
             <input
               class="input--style-2"

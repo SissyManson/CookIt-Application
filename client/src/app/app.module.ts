@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
-import { ContactsComponent } from './contacts/contacts.component';
+import { ContactsComponent } from './user/contacts/contacts.component';
 import { HttpClientModule } from '@angular/common/http';
 import { appInterceptorProvider } from './ap.interceptor';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
@@ -13,7 +13,6 @@ import { AuthenticateComponent } from './authenticate/authenticate.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ContactsComponent,
     AuthenticateComponent,
   ],
   imports: [

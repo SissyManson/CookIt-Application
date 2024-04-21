@@ -7,7 +7,7 @@ export function matchPassValidator(
   return (control) => {
     const passFormControl = control.get(passControlName);
     const rePassFormControl = control.get(rePassControlName);
-    const isMatch = passFormControl?.value == rePassFormControl?.value;
+    const isMatch = passFormControl?.value === rePassFormControl?.value;
 
     return isMatch ? null : { matchPassValidator: true };
   };

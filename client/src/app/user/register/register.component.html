@@ -20,6 +20,12 @@
               >
                 Email must be at least 5 characters!
               </p>
+              <p
+                class="error"
+                *ngIf="regForm.get('email')?.errors?.['pattern']"
+              >
+                Email is invalid!
+              </p>
             </ng-container>
             <input
               class="input--style-2"
@@ -87,7 +93,7 @@
                   >
                     <p
                       class="error"
-                      *ngIf="passwordGroup?.errors?.['matchPasswordsValidator'] || 
+                      *ngIf="passwordGroup?.errors?.['matchPassValidator'] || 
                       passwordGroup?.get('rePassword')?.errors?.['required']"
                     >
                       Passwords don't match!
@@ -107,11 +113,11 @@
 
           <div class="p-t-30">
             <button
-            [disabled]="regForm.invalid"
-            [style]="{
-              backgroundColor: regForm.invalid ? 'gray' : '#567d99',
-              cursor: regForm.invalid ? 'not-allowed' : 'pointer'
-            }"
+              [disabled]="regForm.invalid"
+              [style]="{
+                backgroundColor: regForm.invalid ? 'gray' : '#567d99',
+                cursor: regForm.invalid ? 'not-allowed' : 'pointer'
+              }"
               class="btn btn--radius btn--green"
             >
               Register

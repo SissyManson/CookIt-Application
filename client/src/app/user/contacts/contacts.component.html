@@ -62,24 +62,35 @@
       </div>
       <div class="card-body">
         <h2 class="title">Contact us</h2>
-        <form method="POST">
+
+        <!-- CONTACT FORM -->
+        <form [formGroup]="contactForm" (ngSubmit)="sendMsg()">
           <div class="input-group">
             <input
               class="input--style-2"
               type="text"
-              placeholder="Email"
               name="email"
+              formControlName="email"
+              placeholder="Email"
             />
           </div>
           <textarea
             name="message"
             id="message"
             rows="20"
+            formControlName="message"
             placeholder="What would you like to contact us about?"
           ></textarea>
 
           <div class="p-t-30">
-            <button class="btn btn--radius btn--green" type="submit">
+            <button
+              [disabled]="contactForm.invalid"
+              [style]="{
+                backgroundColor: contactForm.invalid ? 'gray' : '#567d99',
+                cursor: contactForm.invalid ? 'not-allowed' : 'pointer'
+              }"
+              class="btn btn--radius btn--green"
+            >
               Send
             </button>
           </div>

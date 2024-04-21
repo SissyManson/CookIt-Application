@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Page404Component } from './shared/page-404/page-404.component';
-import { ContactsComponent } from './contacts/contacts.component';
+import { ContactsComponent } from './user/contacts/contacts.component';
 import { ErrorComponent } from './core/error/error.component';
 
 const routes: Routes = [
