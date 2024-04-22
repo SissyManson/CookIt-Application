@@ -22,16 +22,25 @@ export class CreateComponent {
   }
 
   imgPattern: RegExp = new RegExp('^https?://');
+  foodCategories: string[] = [
+    'Breakfast',
+    'Brunch',
+    'Lunch',
+    'Dinner',
+    'Dessert',
+    'Baked-goods',
+    'Vegetarian',
+  ];
 
   createForm = this.fb.group({
     title: ['', [Validators.required, Validators.minLength(3)]],
     descriptionGroup: this.fb.group({
-      category: [''],
-      servings: ['', [Validators.required]],
+      category: ['', [Validators.required]],
+      servings: ['', [Validators.required, Validators.min(1)]],
     }),
     timeGroup: this.fb.group({
-      prepTime: ['', [Validators.required]],
-      cookTime: ['', [Validators.required]],
+      prepTime: ['', [Validators.required, Validators.min(1)]],
+      cookTime: ['', [Validators.required, Validators.min(1)]],
     }),
     directions: ['', [Validators.required, Validators.minLength(13)]],
     imageURL: ['', [Validators.required, Validators.pattern(this.imgPattern)]],

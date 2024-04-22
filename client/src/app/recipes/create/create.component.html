@@ -6,6 +6,7 @@
         <h2 class="title">Create Your Recipe</h2>
         <!-- TODO: add error messages -->
         <form [formGroup]="createForm" (ngSubmit)="createRecipe()">
+          <!-- TITLE -->
           <div class="input-group">
             <ng-container *ngIf="createForm.get('title')?.touched">
               <p
@@ -30,8 +31,10 @@
             />
           </div>
 
+          <!-- DESCRIPTION -->
           <div class="row row-space">
             <ng-container formGroupName="descriptionGroup">
+              <!-- CATEGORY -->
               <div class="col-2">
                 <div class="input-group">
                   <select
@@ -40,9 +43,7 @@
                     id="category"
                     formControlName="category"
                   >
-                    <option value="" disabled selected hidden>
-                      Choose Category
-                    </option>
+                    <option hidden disabled value="">Choose Category</option>
                     <option value="Breakfast">Breakfast</option>
                     <option value="Brunch">Brunch</option>
                     <option value="Lunch">Lunch</option>
@@ -54,6 +55,7 @@
                 </div>
               </div>
 
+              <!-- SERVINGS -->
               <div class="col-2">
                 <div class="input-group">
                   <input
@@ -70,6 +72,7 @@
             </ng-container>
           </div>
 
+          <!-- PREP TIME -->
           <div class="row row-space">
             <ng-container formGroupName="timeGroup">
               <div class="col-2">
@@ -86,6 +89,7 @@
                 </div>
               </div>
 
+              <!-- COOK TIME -->
               <div class="col-2">
                 <div class="input-group">
                   <input
@@ -127,7 +131,7 @@
             />
           </div>
 
-          <!-- DESCRIPTION -->
+          <!-- HOW IT'S DONE -->
           <div class="input-group">
             <ng-container *ngIf="createForm.get('title')?.touched">
               <p
