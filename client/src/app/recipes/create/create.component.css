@@ -222,7 +222,7 @@ input {
 }
 
 /* TEXTAREA */
-#message {
+#message, #tags {
   width: 100%;
   padding: 10px 5px;
   box-sizing: border-box;

@@ -22,15 +22,6 @@ export class CreateComponent {
   }
 
   imgPattern: RegExp = new RegExp('^https?://');
-  foodCategories: string[] = [
-    'Breakfast',
-    'Brunch',
-    'Lunch',
-    'Dinner',
-    'Dessert',
-    'Baked-goods',
-    'Vegetarian',
-  ];
 
   createForm = this.fb.group({
     title: ['', [Validators.required, Validators.minLength(3)]],
@@ -44,6 +35,7 @@ export class CreateComponent {
     }),
     directions: ['', [Validators.required, Validators.minLength(13)]],
     imageURL: ['', [Validators.required, Validators.pattern(this.imgPattern)]],
+    tags: ['', [Validators.required, Validators.minLength(3)]],
   });
 
   createRecipe(): void {
@@ -53,12 +45,14 @@ export class CreateComponent {
       timeGroup: { prepTime, cookTime } = {},
       directions,
       imageURL,
+      tags,
     } = this.createForm.value;
 
     const owner = this.userId;
 
     if (this.createForm.invalid) return;
 
+    const splitRegex = new RegExp(/[ ,]+/g);
     this.recipeService
       .createRecipe(
         title!,
@@ -68,6 +62,7 @@ export class CreateComponent {
         servings!,
         directions!,
         imageURL!,
+        tags?.split(splitRegex)!,
         owner!
       )
       .subscribe((createdRecipe) => {

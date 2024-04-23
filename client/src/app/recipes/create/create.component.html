@@ -131,18 +131,44 @@
             />
           </div>
 
-          <!-- HOW IT'S DONE -->
+          <!-- TAGS -->
           <div class="input-group">
-            <ng-container *ngIf="createForm.get('title')?.touched">
+            <ng-container *ngIf="createForm.get('tags')?.touched">
               <p
                 class="error"
-                *ngIf="createForm.get('title')?.errors?.['required']"
+                *ngIf="createForm.get('tags')?.errors?.['required']"
+              >
+                Tags are required!
+              </p>
+              <p
+                class="error"
+                *ngIf="createForm.get('tags')?.errors?.['minlength']"
+              >
+                You must add at least one tag 3 characters!
+              </p>
+            </ng-container>
+
+            <textarea
+              name="tags"
+              id="tags"
+              rows="1"
+              placeholder="Add tags to the recipe, separated by comma. E.g.: chicken, curry, ..."
+              formControlName="tags"
+            ></textarea>
+          </div>
+
+          <!-- DIRECTIONS -->
+          <div class="input-group">
+            <ng-container *ngIf="createForm.get('directions')?.touched">
+              <p
+                class="error"
+                *ngIf="createForm.get('directions')?.errors?.['required']"
               >
                 Description is required!
               </p>
               <p
                 class="error"
-                *ngIf="createForm.get('title')?.errors?.['minlength']"
+                *ngIf="createForm.get('directions')?.errors?.['minlength']"
               >
                 Description must be at least 13 characters!
               </p>

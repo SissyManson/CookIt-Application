@@ -35,6 +35,7 @@ export class DetailsComponent implements OnInit {
       '',
       [Validators.required, Validators.pattern(new RegExp('^https?://'))],
     ],
+    tags: ['', [Validators.required, Validators.minLength(3)]],
   });
 
   constructor(
@@ -65,6 +66,7 @@ export class DetailsComponent implements OnInit {
           servings: recipe.servings.toString(),
           directions: recipe.directions,
           imageURL: recipe.imageURL,
+          tags: recipe.tags.join(', '),
         });
       });
     });
@@ -81,6 +83,7 @@ export class DetailsComponent implements OnInit {
     if (this.editForm.invalid) {
       return;
     }
+    const splitRegex = new RegExp(/[ ,]+/g);
 
     const {
       title,
@@ -90,6 +93,7 @@ export class DetailsComponent implements OnInit {
       servings,
       directions,
       imageURL,
+      tags,
     } = this.editForm.value;
 
     this.recipeService
@@ -101,10 +105,13 @@ export class DetailsComponent implements OnInit {
         servings!,
         directions!,
         imageURL!,
+        tags!.split(splitRegex),
         recipeId
       )
       .subscribe(() => {
         this.toggleEdit();
+        // reloading the page to show the edited recipe
+        // otherwise you have to manually reload the page
         window.location.reload();
       });
   }
@@ -117,6 +124,7 @@ export class DetailsComponent implements OnInit {
     }
   }
 
+  //calculates the total amount of time needed for the recipe
   getTotalTime() {
     if (this.totalTime >= 60) {
       let hours = Math.floor(this.totalTime / 60);

@@ -9,6 +9,7 @@ export interface Recipe {
   servings: number;
   directions: string;
   imageURL: string;
+  tags: string[];
   owner: User;
   likedBy: User[];
   created_at: string;

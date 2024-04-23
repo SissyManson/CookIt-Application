@@ -27,6 +27,7 @@ export class RecipeService {
     servings: string,
     directions: string,
     imageURL: string,
+    tags: string[],
     owner: string
   ) {
     return this.http.post<Recipe>('/api/recipes', {
@@ -37,6 +38,7 @@ export class RecipeService {
       servings,
       directions,
       imageURL,
+      tags,
       owner,
     });
   }
@@ -49,6 +51,7 @@ export class RecipeService {
     servings: string,
     directions: string,
     imageURL: string,
+    tags: string[],
     recipeId: string
   ) {
     return this.http.put<Recipe>(`/api/recipes/${recipeId}`, {
@@ -59,6 +62,7 @@ export class RecipeService {
       servings,
       directions,
       imageURL,
+      tags,
     });
   }
 

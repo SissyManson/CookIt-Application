@@ -4,6 +4,7 @@
   text-align: center;
 }
 .mainTitle {
+  margin-bottom: 1em;
   text-transform: uppercase;
   font-weight: 700;
   color: #637498;
@@ -163,6 +164,7 @@
 input {
   outline: none;
   margin: 0;
+  padding-left: 2em;
   border: none;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -288,7 +290,7 @@ input {
 }
 
 /* TEXTAREA */
-#message {
+#message, #tags {
   width: 100%;
   padding: 10px 5px;
   box-sizing: border-box;

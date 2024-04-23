@@ -39,6 +39,10 @@ const recipeSchema = new mongoose.Schema(
          required: true,
          match: /^https?:\/\//,
       },
+      tags: {
+         type: Array,
+         required: true,
+      },
       owner: {
          type: ObjectId,
          ref: 'User',

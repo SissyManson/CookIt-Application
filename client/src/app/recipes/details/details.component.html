@@ -57,7 +57,6 @@
             Title must be at least 5 characters!
           </p>
         </ng-container>
-        <label for="title">Title</label>
         <input
           class="input--style-2"
           type="text"
@@ -160,6 +159,26 @@
           name="imageURL"
           formControlName="imageURL"
         />
+      </div>
+
+      <!-- TAGS -->
+      <div class="input-group">
+        <ng-container *ngIf="editForm.get('tags')?.touched">
+          <p class="error" *ngIf="editForm.get('tags')?.errors?.['required']">
+            Tags are required!
+          </p>
+          <p class="error" *ngIf="editForm.get('tags')?.errors?.['minlength']">
+            You must add at least one tag 3 characters!
+          </p>
+        </ng-container>
+
+        <textarea
+          name="tags"
+          id="tags"
+          rows="1"
+          placeholder="Add tags to the recipe, separated by comma. E.g.: chicken, curry, ..."
+          formControlName="tags"
+        ></textarea>
       </div>
 
       <!-- DESCRIPTION -->
