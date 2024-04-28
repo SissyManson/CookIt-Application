@@ -5,6 +5,7 @@ const recipeController = require('../controllers/recipeController');
 // middleware that is specific to this router
 
 router.get('/', recipeController.getRecipes);
+router.get('/search', recipeController.searchRecipes);
 router.post('/', auth(), recipeController.createRecipe);
 
 router.get('/:recipeId', recipeController.getOne);

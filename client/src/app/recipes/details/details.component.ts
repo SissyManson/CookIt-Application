@@ -15,6 +15,9 @@ export class DetailsComponent implements OnInit {
   totalTime: number = 0;
   getDirections: Array<string> = [];
 
+  editMode: boolean = false;
+  isLiked: boolean = false;
+
   get isLoggedUser(): boolean {
     return this.userService.isLoggedUser;
   }
@@ -23,7 +26,6 @@ export class DetailsComponent implements OnInit {
     return this.userService.user?._id || '';
   }
 
-  editMode: boolean = false;
   editForm = this.fb.group({
     title: ['', [Validators.required, Validators.minLength(3)]],
     category: ['', [Validators.required]],
@@ -75,15 +77,17 @@ export class DetailsComponent implements OnInit {
   toggleEdit(): void {
     this.editMode = !this.editMode;
   }
+
   onCancel(e: Event) {
     e.preventDefault();
     this.toggleEdit();
   }
+
   editRecipe(recipeId: string): void {
     if (this.editForm.invalid) {
       return;
     }
-    const splitRegex = new RegExp(/[ ,]+/g);
+    const splitPattern = new RegExp(/[ ,]+/g);
 
     const {
       title,
@@ -105,7 +109,7 @@ export class DetailsComponent implements OnInit {
         servings!,
         directions!,
         imageURL!,
-        tags!.split(splitRegex),
+        tags!.split(splitPattern),
         recipeId
       )
       .subscribe(() => {

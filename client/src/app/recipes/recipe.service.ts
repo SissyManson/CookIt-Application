@@ -19,6 +19,16 @@ export class RecipeService {
     return this.http.get<Recipe>(`${apiUrl}/recipes/${id}`);
   }
 
+  search(searchTags: string | undefined) {
+    return this.http.get<Recipe[]>(
+      `${apiUrl}/recipes/search?searchTags=${searchTags}`
+    );
+  }
+
+  like(recipeId: string, userId: string) {
+    return this.http.put<Recipe>(`/api/recipes/${recipeId}/like`, { userId });
+  }
+
   createRecipe(
     title: string,
     category: string,

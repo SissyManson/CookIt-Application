@@ -17,6 +17,20 @@ function getOne(req, res, next) {
       .catch(next);
 }
 
+function searchRecipes(req, res, next) {
+   const { searchTags } = req.query;
+   let query = {};
+   if (searchTags) {
+      query.tags = new RegExp(searchTags, 'i');
+   }
+
+   return recipeModel
+      .find(query)
+      .populate('owner')
+       .then((result) => res.json(result))
+      .catch(next);
+}
+
 function createRecipe(req, res, next) {
    const recipeData = req.body;
    const { _id: userId } = req.user;
@@ -100,4 +114,5 @@ module.exports = {
    editRecipe,
    deleteRecipe,
    // like,
+   searchRecipes,
 };

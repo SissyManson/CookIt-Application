@@ -7,6 +7,21 @@
   </ng-container>
 
   <h1 *ngIf="recipes?.length !== 0" class="mainTitle">Browse recipes</h1>
+
+  <!-- SEARCH -->
+  <section class="search">
+    <form method="get" [formGroup]="searchForm" (ngSubmit)="searchingFor()">
+      <input
+        class="searchField"
+        type="search"
+        name="searchTags"
+        formControlName="searchTags"
+        placeholder="What are you looking for..."
+      />
+      <button class="cta">Search</button>
+    </form>
+  </section>
+
   <section *ngIf="recipes?.length !== 0" class="recipeWrapper">
     <div *ngFor="let recipe of recipes" class="card-container">
       <div class="card u-clearfix">

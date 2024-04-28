@@ -52,7 +52,15 @@ export class CreateComponent {
 
     if (this.createForm.invalid) return;
 
-    const splitRegex = new RegExp(/[ ,]+/g);
+    const splitPattern = new RegExp(/[ ,]+/g);
+
+    //! Adding the Title and Category into the tags
+    const titleAndCategoryTags: string[] = [
+      ...(tags?.split(splitPattern) || []),
+      ...(title?.split(splitPattern) || []),
+      ...(category?.split(splitPattern) || []),
+    ];
+
     this.recipeService
       .createRecipe(
         title!,
@@ -62,7 +70,7 @@ export class CreateComponent {
         servings!,
         directions!,
         imageURL!,
-        tags?.split(splitRegex)!,
+        titleAndCategoryTags!,
         owner!
       )
       .subscribe((createdRecipe) => {
