@@ -13,10 +13,6 @@
   outline: 0;
 }
 
-body {
-  font-family: "Raleway", sans-serif;
-}
-
 .mainNav {
   width: 100%;
   position: absolute;
@@ -231,7 +227,6 @@ body {
   color: #637498;
   background-color: transparent;
   border: 1px solid rgba(99, 116, 152, 0.4);
-  font-family: "Raleway", sans-serif;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: 600;

@@ -82,7 +82,7 @@
 }
 .like:hover {
   border: 1px solid rgba(99, 116, 152, 0.1);
-  box-shadow: inset 0px -80px 0px rgba(165, 25, 25, 0.1);
+  box-shadow: inset 0px -80px 0px rgba(25, 65, 165, 0.1);
   transform: translateY(-5px);
   color: #5c819f;
 }
